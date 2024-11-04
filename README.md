@@ -17,4 +17,5 @@ descritas en el documento del caso de estudio, car-rontrol-online.pdf
 - **DIA** - Para el diseño conceptual
 - **ER Studio** - Para el diseño lógico
 - **Oracle 23ai** – Para la implementacion de la base de datos  
-- **Git/GitHub** – Control de versiones.  
+- **Git/GitHub** – Control de versiones.
+- ***Docker**
