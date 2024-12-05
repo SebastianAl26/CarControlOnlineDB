@@ -2,6 +2,7 @@
 --            Carlo Kiliano Ferrera Guadarrama              
 --@Fecha creación: 26/11/2024
 --@Descripción: Se crea el DDL del proyecto
+connect af_proy_admin/af@afbd_s2;
 whenever sqlerror exit;
 
 --Tabla pais
@@ -16,8 +17,8 @@ create table pais(
 --Tabla marca
 create table marca(
   marca_id number(10,0),
-  clave varchar2(40) not null,
-  descripcion varchar2(40) not null,
+  clave varchar2(10) not null, 
+  descripcion varchar2(200) not null, 
   pais_id not null,
   constraint marca_pk primary key(marca_id),
   constraint marca_clave_uk unique(clave),
@@ -62,19 +63,25 @@ create table propietario(
   apellido_materno varchar2(40) null, 
   curp char(18) null,
   correo varchar2(320) not null,
-  puntos_negativos_acumulados varchar2(40) not null,
+  puntos_negativos_acumulados number(10,0) not null, 
   constraint propietario_pk primary key(propietario_id),
   constraint propietario_rfc_uk unique(rfc),
   constraint propietario_curp_uk unique(curp),
   constraint propietario_correo_uk unique(correo)
 );
 
+--Tabla licencia
+create table licencia(    
+  licencia_id number(10,0),
+  tipo char(1) not null,
+  descripcion varchar(100) not null, 
+  constraint licencia_tp_pk primary key(licencia_id)
+);
+
 --Tabla licencia_propietario
 create table licencia_propietario(
   licencia_propietario_id number(10,0),
-  tipo_licencia varchar(40) not null,
   num_licencia char(8) not null,
-  descripcion varchar2(40) not null,
   foto blob not null,
   firma blob not null,
   huella_indice_der blob null,
@@ -85,6 +92,7 @@ create table licencia_propietario(
   fecha_vigencia generated always as (fecha_adquisicion + (365*5)) virtual,
   licencia_remplazo_id null,
   propietario_id not null,
+  licencia_id not null,
   constraint licencia_propietario_pk primary key(licencia_propietario_id),
 
   constraint licencia_propietario_licencia_remplazo_id_fk 
@@ -93,7 +101,11 @@ create table licencia_propietario(
 
   constraint licencia_propietario_propietario_id_fk 
   foreign key(propietario_id)
-  references propietario(propietario_id)
+  references propietario(propietario_id),
+
+  constraint licencia_propietario_licencia_id_fk
+  foreign key(licencia_id)
+  references licencia(licencia_id)
 );
 
 create table multa(
@@ -114,9 +126,10 @@ create table multa(
 create table status_vehiculo(
   status_vehiculo_id number(10,0),
   nombre varchar2(40) not null,
-  descripcion varchar2(40) null,
+  descripcion varchar2(100) null, 
   constraint status_vehiculo_pk primary key(status_vehiculo_id)
 );
+
 
 --Tabla contaminante
 create table contaminante(
@@ -161,7 +174,6 @@ create table vehiculo(
 
   constraint vehiculo_placa_id_uk unique(placa_id), --Relacion 1 a 1
 
-  --Corregir el comentario en el modelo relacional
   constraint vehiculo_jerarquia_chk check( 
     (es_transporte_publico = 0 and es_carga = 1 and es_particular = 1) or
     (es_transporte_publico = 1 and es_carga = 0 and es_particular = 0) or
@@ -170,33 +182,25 @@ create table vehiculo(
   )
 );
 
---Tabla licencia_tp
-create table licencia_tp(
-  licencia_tp_id number(10,0),
-  tipo char(1) not null,
-  descripcion varchar(40) not null,
-  constraint licencia_tp_pk primary key(licencia_tp_id)
-);
 
 --Tabla transporte_publico
 create table vehiculo_transporte_publico(
   vehiculo_id,
   pasajeros_sentados number(10,0) not null,
   pasajeros_parados number(10,0) not null,
-  licencia_tp_id not null,
+  licencia_id not null,
   constraint vehiculo_tp_pk primary key(vehiculo_id),
   constraint vehiculo_tp_vehiculo_id_fk foreign key(vehiculo_id)
   references vehiculo(vehiculo_id),
 
-  constraint vehiculo_transporte_publico_licencia_tp_id 
-  foreign key(licencia_tp_id)
-  references licencia_tp(licencia_tp_id)
+  constraint vehiculo_transporte_publico_licencia_id 
+  foreign key(licencia_id)
+  references licencia(licencia_id)
 );
-
 
 create table vehiculo_carga(
   vehiculo_id,
-  capacidad number(10,0) not null,
+  capacidad number(5,2) not null,
   unidad_capacidad varchar(2),
   numero_remolques number(10,0) null,
   constraint vehiculo_carga_pk primary key(vehiculo_id),
@@ -223,7 +227,6 @@ create table vehiculo_particular(
     tipo_transmision in ('A', 'M')
   )
 );
-
 
 --Tabla historico_status_vehiculo
 create table historico_status_vehiculo(
@@ -316,7 +319,7 @@ create table verificacion(
   constraint verificacion_notificacion_id_fk foreign key(notificacion_id)
   references notificacion(notificacion_id),
 
-  constraint verificacion_notificacion_id_uk unique(notificacion_id),
+  constraint verificacion_notificacion_id_uk unique(notificacion_id), --Relacion 1 a 1
   constraint verificacion_dispo_medicion_uk unique(num_serie_dispo_medicion)
 );
 
@@ -342,3 +345,5 @@ create table contaminante_verificacion(
     medicion between 0 and 1
   )
 );
+
+prompt script finalizado
