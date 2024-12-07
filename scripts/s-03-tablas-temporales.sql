@@ -15,17 +15,19 @@ whenever sqlerror exit;
 connect af_proy_admin/af@afbd_s2
 --Tabla para realizar reportes 
 create global temporary table vehiculos_sin_placa_temporal (
-  vehiculo_id number(10,0) not null,
-  numero_serie varchar2(40) not null,
-  anio varchar(4) not null,
-  es_transporte_publico boolean not null,
-  es_carga boolean not null,
-  es_particular boolean not null,
-  num_serie_dispo_medicion  char(18) not null,
-  status_vehiculo_id number(10,0) not null,
-  modelo_id number(10,0) not null,
-  propietario_id number(10,0) not null
-) on commit preserve rows;
+  vehiculo_id number(10,0),
+  numero_serie varchar2(40),
+  anio varchar(4),
+  es_transporte_publico boolean,
+  es_carga boolean,
+  es_particular boolean,
+  num_serie_dispo_medicion  char(18),
+  fecha_status date,
+  placa_id number(10,0),
+  status_vehiculo_id number(10,0),
+  modelo_id number(10,0),
+  propietario_id number(10,0)
+) on commit preserve rows; 
 
 --Modelo: Tabla para realizar reportes de cuantas coches hay por marca
 

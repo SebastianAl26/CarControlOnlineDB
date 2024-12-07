@@ -288,44 +288,44 @@ values (placa_id_seq.nextval, 'NOP0123456', false, 14);  -- Morelos (19)
 Prompt tabla propietario
 ---Tabla propietario---
 insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido_materno, 
-  curp, correo, puntos_negativos_acumulados) 
+  curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
 values (propietario_id_seq.nextval, 'NING950608081', 'Galilea', 'Nicolas', 'Nicolas', 
-  'NING950608MOAXCG04', 'galilea.nicolas@gmail.com', 0);
+  'NING950608MOAXCG04', 'galilea.nicolas@gmail.com', 0, 1);
 
 insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido_materno, 
-  curp, correo, puntos_negativos_acumulados) 
+  curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
 values (propietario_id_seq.nextval, 'HEMC800420KLA', 'Cecilia', 'Hernandez', 'Martinez', 
-  'HEMC800420MDFNRN01', 'cecilia.martinez@gmail.com', 0);
+  'HEMC800420MDFNRN01', 'cecilia.martinez@gmail.com', 0, 1);
 
 insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido_materno, 
-  curp, correo, puntos_negativos_acumulados) 
+  curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
 values (propietario_id_seq.nextval, 'JUAR900408HLN', 'Juan', 'Ramírez', 'López', 
-  'JUAR900408HDFJNL04', 'juan.ramirez@gmail.com', 0);
+  'JUAR900408HDFJNL04', 'juan.ramirez@gmail.com', 0, 1);
 
 insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido_materno, 
-  curp, correo, puntos_negativos_acumulados) 
+  curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
 values (propietario_id_seq.nextval, 'ALVE950914HDF', 'Alejandra', 'Velázquez', null, 
-  'ALVE950914HDFVLL05', 'alejandra.velazquez@gmail.com', 0);
+  'ALVE950914HDFVLL05', 'alejandra.velazquez@gmail.com', 0, 1);
 
 insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido_materno, 
-  curp, correo, puntos_negativos_acumulados) 
+  curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
 values (propietario_id_seq.nextval, 'DULA850205LDA', 'Luis', 'Duran', 'Arenas', 
-  'DUAL850205HJCNRN02', 'luis.sergio@gmail.com', 30);
+  'DUAL850205HJCNRN02', 'luis.sergio@gmail.com', 30, 1);
 
 insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido_materno, 
-  curp, correo, puntos_negativos_acumulados) 
+  curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
 values (propietario_id_seq.nextval, 'ROCJ901110JRC', 'Jorge', 'Rodriguez', 'Campos', 
-  'RORJ901110HDFMPR09', 'jorge.campos@gmail.com', 70);
+  'RORJ901110HDFMPR09', 'jorge.campos@gmail.com', 70, 1);
 
 insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido_materno, 
-  curp, correo, puntos_negativos_acumulados) 
+  curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
 values (propietario_id_seq.nextval, 'RAHJ920315032', 'Gustavo', 'Ramos', 'Heredia', 
-  'RAHJ920315HQTMSR01', 'gustavo.ramos@gmail.com', 0);
+  'RAHJ920315HQTMSR01', 'gustavo.ramos@gmail.com', 0, 1);
   
 insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido_materno, 
-  curp, correo, puntos_negativos_acumulados) 
+  curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
 values (propietario_id_seq.nextval, 'MARP880720HLN', 'María', 'Pérez', 'Navarro', 
-  'MARP880720HDFMPN09', 'maria.perez@gmail.com', 0);
+  'MARP880720HDFMPN09', 'maria.perez@gmail.com', 0, 1);
 
 Prompt tabla licencia
 ---Tabla licencia---
@@ -345,61 +345,61 @@ insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, f
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '12345678', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('10/01/2005','dd/mm/yyyy'), null, 1, 1);
+  empty_blob(), empty_blob(), to_date('10/01/2017','dd/mm/yyyy'), null, 1, 1);
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '12345677', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('11/02/2006','dd/mm/yyyy'), null, 2, 1);
+  empty_blob(), empty_blob(), to_date('11/02/2018','dd/mm/yyyy'), null, 2, 1);
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '12345777', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('12/03/2007','dd/mm/yyyy'), null, 3, 1);
+  empty_blob(), empty_blob(), to_date('12/03/2019','dd/mm/yyyy'), null, 3, 1);
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '12347777', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('13/04/2008','dd/mm/yyyy'), null, 4, 2);
+  empty_blob(), empty_blob(), to_date('13/04/2020','dd/mm/yyyy'), null, 4, 2);
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '12345578', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('14/05/2009','dd/mm/yyyy'), null, 5, 2);
+  empty_blob(), empty_blob(), to_date('14/05/2020','dd/mm/yyyy'), null, 5, 2);
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '13345678', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('15/06/2010','dd/mm/yyyy'), null, 6, 2);
+  empty_blob(), empty_blob(), to_date('15/06/2019','dd/mm/yyyy'), null, 6, 2);
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '11345678', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('16/07/2011','dd/mm/yyyy'), null, 7, 3);
+  empty_blob(), empty_blob(), to_date('16/07/2019','dd/mm/yyyy'), null, 7, 3);
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '12344678', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('11/01/2012','dd/mm/yyyy'), null, 8, 3);
+  empty_blob(), empty_blob(), to_date('11/01/2017','dd/mm/yyyy'), null, 8, 3);
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '87654321', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('18/07/2013','dd/mm/yyyy'), null, 1, 3);
+  empty_blob(), empty_blob(), to_date('18/07/2018','dd/mm/yyyy'), null, 1, 3);
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
   propietario_id, licencia_id)
 values (licencia_propietario_id_seq.nextval, '87664321', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('14/09/2015','dd/mm/yyyy'), null, 2, 2);
+  empty_blob(), empty_blob(), to_date('14/09/2019','dd/mm/yyyy'), null, 2, 2);
 
 
 Prompt tabla multa
@@ -641,105 +641,177 @@ prompt tabla contaminante_vehiculo
 -- vehículo 1
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (1, 0.35, to_date('01/01/2024', 'dd/mm/yyyy'), 1, 1);
+values (contaminante_vehiculo_id_seq.nextval, 0.35, to_date('01/01/2024', 'dd/mm/yyyy'), 1, 1);
 
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (2, 0.32, to_date('15/02/2024', 'dd/mm/yyyy'), 1, 2);
+values (contaminante_vehiculo_id_seq.nextval, 0.32, to_date('15/02/2024', 'dd/mm/yyyy'), 1, 2);
 
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (3, 0.29, to_date('10/03/2024', 'dd/mm/yyyy'), 1, 3);
+values (contaminante_vehiculo_id_seq.nextval, 0.29, to_date('10/03/2024', 'dd/mm/yyyy'), 1, 3);
 
 -- vehículo 2
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (4, 0.30, to_date('05/01/2024', 'dd/mm/yyyy'), 2, 4);
+values (contaminante_vehiculo_id_seq.nextval, 0.30, to_date('05/01/2024', 'dd/mm/yyyy'), 2, 4);
 
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (5, 0.33, to_date('20/02/2024', 'dd/mm/yyyy'), 2, 1);
+values (contaminante_vehiculo_id_seq.nextval, 0.33, to_date('20/02/2024', 'dd/mm/yyyy'), 2, 1);
 
 -- vehículo 3
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (6, 0.31, to_date('03/01/2024', 'dd/mm/yyyy'), 3, 2);
+values (contaminante_vehiculo_id_seq.nextval, 0.31, to_date('03/01/2024', 'dd/mm/yyyy'), 3, 2);
 
 -- vehículo 4
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (7, 0.28, to_date('15/02/2024', 'dd/mm/yyyy'), 4, 3);
+values (contaminante_vehiculo_id_seq.nextval, 0.28, to_date('15/02/2024', 'dd/mm/yyyy'), 4, 3);
 
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (8, 0.32, to_date('25/03/2024', 'dd/mm/yyyy'), 4, 4);
+values (contaminante_vehiculo_id_seq.nextval, 0.32, to_date('25/03/2024', 'dd/mm/yyyy'), 4, 4);
 
 -- vehículo 5
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (9, 0.36, to_date('01/01/2024', 'dd/mm/yyyy'), 5, 1);
+values (contaminante_vehiculo_id_seq.nextval, 0.36, to_date('01/01/2024', 'dd/mm/yyyy'), 5, 1);
 
 -- vehículo 6
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (10, 0.34, to_date('10/02/2024', 'dd/mm/yyyy'), 6, 2);
+values (contaminante_vehiculo_id_seq.nextval, 0.34, to_date('10/02/2024', 'dd/mm/yyyy'), 6, 2);
+
+insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
+  vehiculo_id, contaminante_id)
+values (contaminante_vehiculo_id_seq.nextval, 0.34, to_date('11/02/2024', 'dd/mm/yyyy'), 6, 1);
 
 -- vehículo 7
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (11, 0.33, to_date('20/03/2024', 'dd/mm/yyyy'), 7, 3);
+values (contaminante_vehiculo_id_seq.nextval, 0.33, to_date('20/03/2024', 'dd/mm/yyyy'), 7, 3);
 
 -- vehículo 8
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (12, 0.32, to_date('05/01/2024', 'dd/mm/yyyy'), 8, 4);
+values (contaminante_vehiculo_id_seq.nextval, 0.32, to_date('05/01/2024', 'dd/mm/yyyy'), 8, 4);
 
 -- vehículo 9
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (13, 0.29, to_date('10/02/2024', 'dd/mm/yyyy'), 9, 1);
+values (contaminante_vehiculo_id_seq.nextval, 0.29, to_date('10/02/2024', 'dd/mm/yyyy'), 9, 1);
 
 -- vehículo 10
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (14, 0.30, to_date('15/03/2024', 'dd/mm/yyyy'), 10, 2);
+values (contaminante_vehiculo_id_seq.nextval, 0.30, to_date('15/03/2024', 'dd/mm/yyyy'), 10, 2);
 
 -- vehículo 11
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (15, 0.31, to_date('25/03/2024', 'dd/mm/yyyy'), 11, 3);
+values (contaminante_vehiculo_id_seq.nextval, 0.31, to_date('25/03/2024', 'dd/mm/yyyy'), 11, 3);
+
+insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
+  vehiculo_id, contaminante_id)
+values (contaminante_vehiculo_id_seq.nextval, 0.42, to_date('13/03/2024', 'dd/mm/yyyy'), 11, 2);
 
 -- vehículo 12
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (16, 0.35, to_date('01/01/2024', 'dd/mm/yyyy'), 12, 4);
+values (contaminante_vehiculo_id_seq.nextval, 0.35, to_date('01/01/2024', 'dd/mm/yyyy'), 12, 4);
 
 -- vehículo 13
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (17, 0.33, to_date('10/02/2024', 'dd/mm/yyyy'), 13, 1);
+values (contaminante_vehiculo_id_seq.nextval, 0.33, to_date('10/02/2024', 'dd/mm/yyyy'), 13, 1);
 
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (18, 0.30, to_date('25/03/2024', 'dd/mm/yyyy'), 13, 2);
+values (contaminante_vehiculo_id_seq.nextval, 0.30, to_date('25/03/2024', 'dd/mm/yyyy'), 13, 2);
 
 -- vehículo 14
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (19, 0.28, to_date('05/01/2024', 'dd/mm/yyyy'), 14, 3);
+values (contaminante_vehiculo_id_seq.nextval, 0.28, to_date('05/01/2024', 'dd/mm/yyyy'), 14, 3);
 
 -- vehículo 15
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (20, 0.32, to_date('15/02/2024', 'dd/mm/yyyy'), 15, 4);
+values (contaminante_vehiculo_id_seq.nextval, 0.32, to_date('15/02/2024', 'dd/mm/yyyy'), 15, 4);
 
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (21, 0.29, to_date('20/03/2024', 'dd/mm/yyyy'), 15, 1);
+values (contaminante_vehiculo_id_seq.nextval, 0.29, to_date('20/03/2024', 'dd/mm/yyyy'), 15, 1);
 
 insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
   vehiculo_id, contaminante_id)
-values (22, 0.34, to_date('10/04/2024', 'dd/mm/yyyy'), 15, 3);
+values (contaminante_vehiculo_id_seq.nextval, 0.34, to_date('10/04/2024', 'dd/mm/yyyy'), 15, 3);
+
+insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
+  vehiculo_id, contaminante_id)
+values (contaminante_vehiculo_id_seq.nextval, 0.4, to_date('20/04/2024', 'dd/mm/yyyy'), 15, 2);
+
+insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
+  vehiculo_id, contaminante_id)
+values (contaminante_vehiculo_id_seq.nextval, 0.4, to_date('20/02/2024', 'dd/mm/yyyy'), 15, 2);
+
+insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
+  vehiculo_id, contaminante_id)
+values (contaminante_vehiculo_id_seq.nextval, 0.42, to_date('20/03/2024', 'dd/mm/yyyy'), 15, 2);
+
+insert into contaminante_vehiculo (contaminante_vehiculo_id, medicion, fecha_registro, 
+  vehiculo_id, contaminante_id)
+values (contaminante_vehiculo_id_seq.nextval, 0.1, to_date('25/04/2024', 'dd/mm/yyyy'), 15, 1);
+
+Prompt tabla temporal vehiculos sin placa
+-- Vehículos de tipo transporte_publico (es_transporte_publico = 1)
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, 'NNNB3C4D5E6F7GCDMX', '2022', 1, 0, 0, '1A2B3C4D5E6F7G9983', 
+to_date('01/07/2023', 'dd/mm/yyyy'), null, 1, 1, 1); 
+
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, '2B3C4D5BBB7G8H9I0K', '2021', 1, 0, 0, '2B3C4D5E6F7G8H9L0M', 
+to_date('10/08/2023', 'dd/mm/yyyy'), null, 1, 1, 2); 
+
+-- Vehículos de tipo carga (es_carga = 1)
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, '66ZZ7G8H9I0J1K2L3N', '2018', 0, 1, 0, '5E6F7G8H9I0LLOOP', 
+to_date('01/06/2023', 'dd/mm/yyyy'), null, 1, 5, 5); 
+
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, '8KPP8H9ÑLK1K2L3N4O', '2021', 0, 1, 0, '6F7G8H9I0J1KILIA', 
+to_date('10/09/2023', 'dd/mm/yyyy'), null, 1, 4, 6); 
+
+-- Vehículos de tipo particular (es_particular = 1)
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, '9I0J1K2L3M4POPOT', '2021', 0, 0, 1, '9I0J1K2LLIIY', 
+to_date('02/11/2023', 'dd/mm/yyyy'), null, 1, 10, 1); 
+
+-- Vehículos de tipo carga y particular (es_carga = 1 y es_particular = 1)
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, 'D3M4N5O6P7Q8MNJUO', '2020', 0, 1, 1, 'D3M4N5O99OM', 
+to_date('28/11/2023', 'dd/mm/yyyy'), null, 1, 6, 5); 
+
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, 'E4N5O6JJJ8ROOPPÑÑ', '2021', 0, 1, 1, 'E4N5O6PSSLL', 
+to_date('05/12/2023', 'dd/mm/yyyy'), null, 1, 17, 6); 
+
 
 prompt carga completada
 commit; 
