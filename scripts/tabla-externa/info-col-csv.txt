@@ -1,0 +1,39 @@
+--Que es OBFCM---
+OBFCM significa On-Board Fuel Consumption Monitoring, o Monitoreo de 
+Consumo de Combustible a Bordo. Es una tecnología instalada en los vehículos 
+modernos que recopila y registra datos sobre el consumo de combustible y las 
+emisiones de dióxido de carbono (CO2). Este sistema se implementa principalmente 
+para cumplir con normativas ambientales y de eficiencia energética, 
+como las regulaciones de la Unión Europea.
+
+----columnas----
+#Manfacturer --- Empresa que fabrica lso autos
+#Fuel Type --- Tipo de Combustible
+#Number of vehicles --- Numero de vehiculos
+
+#OBFCM Fuel consumption (l/100 km) --- 
+  Muestra el consumo de combustible promedio de los vehículos, 
+  expresado en litros por cada 100 kilómetros recorridos. Este valor 
+  se basa en datos reales recopilados por el sistema OBFCM en condiciones 
+  normales de manejo.
+
+#OBFCM CO2 emissions (g/km)
+  Representa la cantidad promedio de dióxido de carbono emitido por los 
+  vehículos en gramos por kilómetro recorrido, medida directamente por el sistema 
+  OBFCM durante la conducción. Se toman en cuenta condiciones normales de manejo
+  Es un indicador clave del impacto ambiental del vehículo.
+  
+  
+#OBFCM Fuel consumption weighted (l/100 km)
+  Es el consumo promedio de combustible, ponderado en función de diferentes 
+  condiciones de conducción (como urbana, extraurbana o combinada). 
+  Frecuencia de uso del vehículo (distancias recorridas).
+  Condiciones de conducción (ciudad, carretera, etc.).
+  Este cálculo refleja un promedio 
+  ajustado que simula el uso típico del vehículo en la vida real.
+
+#OBFCM CO2 emissions weighted (g/km)
+  Es el promedio ponderado de las emisiones de CO2 emitidas por los vehículos,
+  expresado en gramos por kilómetro. Este cálculo considera diferentes escenarios 
+  de manejo (urbano, extraurbano, combinado) y refleja un valor más representativo 
+  del impacto ambiental en condiciones reales de uso.
