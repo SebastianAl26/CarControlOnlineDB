@@ -45,23 +45,12 @@ on contaminante_vehiculo(fecha_registro);
 ----Indices compuestos----
 /*Para evitar combinaciones duplicadas en tablas intermedias o por el concepto 
 de dependencia de identificacion evitando asi inconsistencias*/
-create unique index notificacion_vehic_id_num_notificacion_iuk
-on notificacion(vehiculo_id, num_notificacion);
-
-create unique index contaminante_verificacion_verif_id_contam_id_iuk 
-on contaminante_verificacion(verificacion_id, contaminante_id);
-
-create unique index contaminante_vehiculo_vehic_id_contam_id_iuk
-on contaminante_vehiculo(vehiculo_id, contaminante_id); 
-
-create unique index historico_status_vehiculo_vehic_id_status_vehic_id_iuk
-on historico_status_vehiculo(vehiculo_id, status_vehiculo_id); 
 
 create unique index historico_propietario_vehiculo_vehic_id_propiet_id_iuk
 on historico_propietario_vehiculo(vehiculo_id, propietario_id); 
 
-
 ----Indices basados en funciones----
 create index modelo_nombre_ifx on modelo(lower(nombre));
+
 --Las busquedas de carros se realizan empleando los primeros 8 caracteres
 create index vehiculo_numero_serie on vehiculo(substr(numero_serie, 1, 8));

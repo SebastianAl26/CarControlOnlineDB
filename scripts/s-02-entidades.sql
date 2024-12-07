@@ -6,6 +6,7 @@ connect af_proy_admin/af@afbd_s2;
 whenever sqlerror exit;
 
 --Tabla pais
+prompt tabla pais
 create table pais(
   pais_id number(10,0),
   clave varchar2(3) not null, 
@@ -15,6 +16,7 @@ create table pais(
 );
 
 --Tabla marca
+prompt tabla marca
 create table marca(
   marca_id number(10,0),
   clave varchar2(10) not null, 
@@ -26,6 +28,7 @@ create table marca(
 );
 
 --Tabla modelo
+prompt tabla modelo
 create table modelo(
   modelo_id number(10,0),
   nombre varchar2(40) not null,
@@ -35,6 +38,7 @@ create table modelo(
 );
 
 --Tabla estado
+prompt tabla estado
 create table estado(
   estado_id number(10,0),
   clave varchar2(2) not null, 
@@ -44,6 +48,7 @@ create table estado(
 );
 
 --Tabla placa
+prompt tabla placa
 create table placa(
   placa_id number(10,0),
   numero_placa varchar2(10) not null,
@@ -55,6 +60,7 @@ create table placa(
 );
 
 --Tabla propietario
+prompt tabla propietario
 create table propietario(
   propietario_id number(10,0),
   rfc char(13) not null,
@@ -64,6 +70,7 @@ create table propietario(
   curp char(18) null,
   correo varchar2(320) not null,
   puntos_negativos_acumulados number(10,0) not null, 
+  con_derecho_a_licencia boolean not null,
   constraint propietario_pk primary key(propietario_id),
   constraint propietario_rfc_uk unique(rfc),
   constraint propietario_curp_uk unique(curp),
@@ -71,6 +78,7 @@ create table propietario(
 );
 
 --Tabla licencia
+prompt tabla licencia
 create table licencia(    
   licencia_id number(10,0),
   tipo char(1) not null,
@@ -79,6 +87,7 @@ create table licencia(
 );
 
 --Tabla licencia_propietario
+prompt tabla licencia_propietario
 create table licencia_propietario(
   licencia_propietario_id number(10,0),
   num_licencia char(8) not null,
@@ -108,9 +117,10 @@ create table licencia_propietario(
   references licencia(licencia_id)
 );
 
+prompt tabla multa
 create table multa(
   propietario_id not null,
-  folio varchar2(40),
+  folio number(10,0),
   fecha_registro date default sysdate,
   descripcion varchar(300) not null,
   puntos_negativos number(3,0) not null,
@@ -123,6 +133,7 @@ create table multa(
 
 
 --Tabla status_vehiculo
+prompt tabla status_vehiculo
 create table status_vehiculo(
   status_vehiculo_id number(10,0),
   nombre varchar2(40) not null,
@@ -132,6 +143,7 @@ create table status_vehiculo(
 
 
 --Tabla contaminante
+prompt tabla contaminante
 create table contaminante(
   contaminante_id number(10,0),
   clave char(3) not null,    
@@ -142,6 +154,7 @@ create table contaminante(
 
 ----------------------------------------------------------------------------------------
 --Tabla vehiculo
+prompt tabla vehiculo
 create table vehiculo(
   vehiculo_id number(10,0),
   numero_serie char(18) not null,
@@ -184,6 +197,7 @@ create table vehiculo(
 
 
 --Tabla transporte_publico
+prompt tabla vehiculo transporte publico
 create table vehiculo_transporte_publico(
   vehiculo_id,
   pasajeros_sentados number(10,0) not null,
@@ -197,7 +211,7 @@ create table vehiculo_transporte_publico(
   foreign key(licencia_id)
   references licencia(licencia_id)
 );
-
+prompt vehiculo_carga
 create table vehiculo_carga(
   vehiculo_id,
   capacidad number(5,2) not null,
@@ -212,6 +226,7 @@ create table vehiculo_carga(
 );
 
 --Tabla particular
+prompt tabla vehiculo_particular
 create table vehiculo_particular(
   vehiculo_id,
   num_bolsas_aire number(10,0) not null,
@@ -229,6 +244,7 @@ create table vehiculo_particular(
 );
 
 --Tabla historico_status_vehiculo
+prompt tabla historico_status_vehiculo
 create table historico_status_vehiculo(
   historico_status_vehiculo_id number(10,0),
   fecha_status date not null,
@@ -247,6 +263,7 @@ create table historico_status_vehiculo(
 );
 
 --Tabla historico_propietario_vehiculo
+prompt tabla historico_propietario_vehiculo
 create table historico_propietario_vehiculo(
   historico_propietario_vehiculo_id number(10,0),
   fecha_adquisiscion date not null,
@@ -267,6 +284,7 @@ create table historico_propietario_vehiculo(
 );
 
 --Tabla contaminante_vehiculo
+prompt tabla contaminante_vehicullo
 create table contaminante_vehiculo(
   contaminante_vehiculo_id number(10,0),
   medicion number(3,2) not null,
@@ -287,6 +305,7 @@ create table contaminante_vehiculo(
 );
 
 --Tabla notificacion
+prompt tabla notificacion
 create table notificacion(
   notificacion_id number(10,0),
   num_notificacion number(1,0) not null,
@@ -304,6 +323,7 @@ create table notificacion(
 );
 
 --Tabla verificacion
+prompt tabla verificacion
 create table verificacion(
   verificacion_id number(10,0),
   clave_verificentro char(5) not null,
@@ -324,6 +344,7 @@ create table verificacion(
 );
 
 --Tabla contaminante_verificacion
+prompt tabla contaminante_verificacion
 create table contaminante_verificacion(
   contaminante_verificacion_id number(10,0),
   medicion number(3,2) not null, 

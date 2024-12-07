@@ -6,27 +6,25 @@
 whenever sqlerror exit;
 connect af_proy_admin/af@afbd_s2
 
-/*
-Cada cierto tiempo se desea generar un reporte para analizar datos sobre vehiculos que son 
-de cierto modelo en especifico, El reporte deberia incluir el nombre del propietario, ademas
-tambien el numero de serie, numero de placa y modelo del vehiculo. La idea general de esta vista
-es ocultar informacion sensible como curp, correo, numero de licencia, 
-firmas y datos sensibles de licencia en general. 
-Para eso al final otorgamos el permiso de usar esa vista al ususario invitado 
+/*Se desea mostrar infromacion de los propietarios y sus licencias, pero 
+restringiendo datos sensibles o privados del propietario como podrian ser curp, 
+puntos_negativos, foto, firma y huellas de sus licencias. 
+Para eso se desea crear una vista que incluya el nombre del propietario 
+y si es tiene licencias, su numero de licencia, su tipo y su fecha de vigencia.
+Otorgamos el permiso de usar esa vista al ususario invitado 
 donde se harian estas consultas
 */
 
-create or replace view v_info_vehiculo(
-  numero_serie, numero_placa, modelo, fecha_vigencia, nombre_propietario
-) as select v.numero_serie, p.numero_placa, m.nombre, l.fecha_vigencia,
-  p.nombre||' '||p.apellido_paterno||' '||p.apellido_materno nombre_propietario 
-from vehiculo v
-join propietario p on v.propietario_id = p.propietario_id
-join placa p on v.placa_id = p.placa_id
-join modelo m on v.modelo_id = m.modelo_id
-join licencia_propietario l on l.propietario_id = p.propietario_id;
+create or replace view v_licencias_propietarios(
+  nombre_propietario, num_licencia, tipo, fecha_vigencia_licencia
+) as select p.nombre||' '||p.apellido_paterno||' '||p.apellido_materno nombre_propietario,
+  lp.num_licencia, l.tipo, lp.fecha_vigencia
+from propietario p
+left join licencia_propietario lp on p.propietario_id = lp.propietario_id
+left join licencia l on lp.licencia_id = l.licencia_id
+order by nombre_propietario;
 
-grant select on v_info_vehiculo to af_proy_invitado;
+grant select on v_licencias_propietarios to af_proy_invitado;
 
 /*
 Cada cierto tiempo se requiere generar un reporte para analizar datos sobre vehículos que 
@@ -34,7 +32,8 @@ son de tipos carga y particular al mismo tiempo.El reporte debe incluir los sigu
 El número de serie, año,el nombre del modelo y clave de la marca, el numero de placa, la 
 capacidad (incluyendo su unidad), el tipo de transmisión ,si cuentan con frenos ABS.
 Además, debe reflejar el estado actual del vehículo, incluyendo  la fecha en que fue 
-actualizado. También se quiere mostrar número total de contaminantes registrados por cada vehículo
+actualizado. También se quiere mostrar número total de contaminantes 
+registrados por cada vehículo
 */
 
 create or replace view v_reporte_contaminantes(
@@ -59,29 +58,16 @@ join status_vehiculo s on v.status_vehiculo_id = s.status_vehiculo_id
 join modelo mo on v.modelo_id = mo.modelo_id
 join marca ma on mo.marca_id = ma.marca_id;
 
-select * from v_info_vehiculo;
-select * from v_reporte_contaminantes;
-select * from v_licencias_propietario;
+/*
+Se desea cada año generar un reporte para analizar las multas cometidas 
+en ese mismo año, en el reporte debe salir el numero de serie del vehiculo,
+rfc del propietario, fecha de registro, puntos negativos, descripcion de la multa y numero de licencia.
+
+El proporsito de la vista es ocultar datos sensibles de licencia, ocultar datos de poca
+relevancia para propietario y vehiculo 
+*/
 
 /*
-Cada cierto tiempo se desea generar un reporte para analizar datos sobre las licencias
-de los propietarios se puede obtener información detallada 
-sobre los propietarios y sus licencias, incluyendo el estado actual de la licencia 
-(tipo y fecha de vigencia) y la relación con licencias anteriores que han sido reemplazadas.
-
-Un caso de uso sería verificar la validez de las licencias en vigencia y anticipar renovaciones, evitando 
-que los propietarios operen con licencias vencidas. Esto es especialmente útil para asegurar el 
-cumplimiento de normativas o para mantener registros actualizados en un sistema de gestión de licencias.
+select * from v_licencias_propietarios;
+select * from v_reporte_contaminantes;
 */
-create or replace view v_licencias_propietario(
-  nombre_completo, numero_licencia, fecha_vigencia, 
-  numero_licencia_anterior, fecha_vigencia_anterior
-) as select p.nombre||' '||p.apellido_paterno||' '||p.apellido_materno nombre_completo,
-  l.num_licencia, l.fecha_vigencia, 
-  lr.num_licencia numero_licencia_anterior, 
-  lr.fecha_vigencia fecha_vigencia_anterior
-from propietario p
-join licencia_propietario l on p.propietario_id = l.propietario_id
-left join licencia_propietario lr on l.licencia_remplazo_id = lr.licencia_propietario_id;
-
-

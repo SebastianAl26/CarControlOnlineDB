@@ -13,3 +13,5 @@ connect sys/system1@afbd_s2 as sysdba
 @s-07-sinonimos.sql
 @s-08-vistas.sql
 @s-09-carga-inicial.sql
+
+--select * from vehiculos_sin_placa_temporal;
