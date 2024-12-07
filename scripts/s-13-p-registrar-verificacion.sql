@@ -29,6 +29,7 @@ v_propietario_id number;
 v_puntos_negativos_por_notificacion number;
 v_puntos_negativos_propietario number;
 
+--Obtenemos los contaminantes por verificacion
 cursor cur_contaminantes_medidos_verificentro is
   select c.nombre, c.clave, cv.medicion
   from contaminante_verificacion cv
@@ -39,25 +40,28 @@ begin
   select count(*) into v_cantidad_registros
   from contaminante_verificacion
   where verificacion_id = p_verificacion_id;
-
+  
+  --Validamos el caso la verificacion no haya acabado o no tenga registros de contaminante aun
   if v_cantidad_registros = 0 then
     dbms_output.put_line('No se medido nada aun para esta verificacion, ejecutar'||
       ' cuando se tengan mediciones');
     return;
   end if;
 
-  --Mostrar reporte 
+  --Mostrar reporte de contaminantes obtenido por el cursos 
   dbms_output.put_line('Nombre  Clave  Medicion');
   for r in cur_contaminantes_medidos_verificentro loop
     dbms_output.put_line(r.nombre||' '||r.clave||' '||r.medicion||CHAR(10));
     v_suma_contaminantes := v_suma_contaminantes + r.medicion;
   end loop;
 
+  --Validamos si no paso la verificacion, no actualizaremos nada en la BD
   if v_suma_contaminantes > 1.5 then
     dbms_output.put_line('El vehiculo no paso la verificacion su status no cambia');
     return;
   end if;
 
+  --Hacemos actualizacion al status del vehiculo a en regla
   update vehiculo
   set status_vehiculo_id = (
     select status_vehiculo_id
@@ -67,6 +71,8 @@ begin
   dbms_output.put_line('El status del vehiculo con id: '||p_vehiculo_id||' fue'|| 
     ' actualizado al status EN REGLA');
 
+  --Hacemos una consulta para ver las verificaciones que han sido generadas por una 
+  --notificacion, si es el caso procedemos a borrar las notificaciones
   select count(*) into v_existe_notificacion
   from verificacion
   where verificacion_id = p_verificacion_id
@@ -83,6 +89,9 @@ begin
       ' ahora que el status es EN REGLA, se han eliminado');
   end if;
 
+  --Hacemos una consulta para encontrar las multas que se le hicieron al propietario
+  --por no hacer su verificacion, en el caso tenga sumamos esos puntos y los restamos
+  --en puntos acumulados del propietario, ya por ultimo borramos esas multas
   select p.propietario_id, p.puntos_negativos_acumulados,
     count(*), sum(puntos_negativos) 
   into v_propietario_id, v_num_multas, v_puntos_negativos_por_notificacion,
@@ -102,7 +111,7 @@ begin
     set puntos_negativos_acumulados = 
       puntos_negativos_acumulados - v_puntos_negativos_por_notificacion
     where propietario_id = v_propietario_id;
-
+    --Si los puntos acumulados son menos de 200 el derecho a licencia debe ser valido
     if v_puntos_negativos_propietario < 200 then
       update propietario
       set con_derecho_a_licencia = true

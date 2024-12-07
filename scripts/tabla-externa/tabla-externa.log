@@ -1424,3 +1424,509 @@ Field Definitions for table EMISIONES_VEHICULOS_EXTERNA
       Trim whitespace from left and right
 error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
 ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 00:00:18
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 00:00:18
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULOS_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    MARCA                           CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMSIONES_CO2                    CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:06:25
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:06:25
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULOS_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    MARCA                           CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMSIONES_CO2                    CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:14:31
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:14:31
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULO_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    FABRICANTE                      CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMSIONES_CO2                    CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:19:09
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:19:09
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULO_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    FABRICANTE                      CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMSIONES_CO2                    CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:19:31
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:19:31
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULO_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    FABRICANTE                      CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMSIONES_CO2                    CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:21:23
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:21:23
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:21:23
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULO_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    FABRICANTE                      CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMSIONES_CO2                    CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:21:23
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULO_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    FABRICANTE                      CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMSIONES_CO2                    CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:23:07
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:23:07
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:23:07
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULO_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    FABRICANTE                      CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMSIONES_CO2                    CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:23:07
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULO_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    FABRICANTE                      CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMSIONES_CO2                    CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:28:36
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:28:36
+
+Total Number of Files=1
+
+Data File: tabla-externa.csv
+
+Log File: tabla-externa.log
+
+
+
+ LOG file opened at 12/07/24 04:28:36
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULO_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    FABRICANTE                      CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2                   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS
+
+
+ LOG file opened at 12/07/24 04:28:36
+
+Bad File: tabla-externa_bad.log
+
+Field Definitions for table EMISIONES_VEHICULO_EXTERNA
+  Record format DELIMITED BY NEWLINE
+  Data in file has same endianness as the platform
+  Rows with all null fields are accepted
+
+  Fields in Data Source: 
+
+    FABRICANTE                      CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    TIPO_COMBUSTIBLE                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    NUMERO_VEHICULOS                CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE             CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2                   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    CONSUMO_COMBUSTIBLE_PONDERADO   CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+    EMISIONES_CO2_PONDERADA         CHAR (255)
+      Terminated by ","
+      Trim whitespace from left and right
+error processing column NUMERO_VEHICULOS in row 1 for datafile /unam/bd/proyectoFinalBd/scripts/tabla-externa/tabla-externa.csv
+ORA-01722: unable to convert string value containing 'N' to a number: NUMERO_VEHICULOS

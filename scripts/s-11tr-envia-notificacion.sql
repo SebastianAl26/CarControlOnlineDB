@@ -13,7 +13,7 @@ exceso, el estado del carro paasa a ser VERIFICACION PENDIENTE, ademas una vez s
 3 notificaciones por cada nueva notificacion se generara una multa de 15 puntos*/
 
 create or replace trigger tr_envia_notificacion
-after insert 
+before insert 
 on contaminante_vehiculo for each row
 
 declare 
@@ -64,8 +64,8 @@ begin
       join contaminante_vehiculo cv on v.vehiculo_id = cv.vehiculo_id
       where v.vehiculo_id = :new.vehiculo_id;
       
-      proc_registra_multa(v_propietario_id, 'Caso omiso a las notificaciones
-        para verificar el vehiculo', 15, v1, v2);
+      --proc_registra_multa(v_propietario_id, 'Caso omiso a las notificaciones
+        --para verificar el vehiculo', 15, v1, v2);
     end if;
 
 

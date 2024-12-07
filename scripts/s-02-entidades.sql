@@ -266,7 +266,7 @@ create table historico_status_vehiculo(
 prompt tabla historico_propietario_vehiculo
 create table historico_propietario_vehiculo(
   historico_propietario_vehiculo_id number(10,0),
-  fecha_adquisiscion date not null,
+  fecha_adquisicion date not null,
   fecha_fin date null,
   vehiculo_id not null,
   propietario_id not null,

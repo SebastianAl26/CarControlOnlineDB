@@ -1,8 +1,7 @@
 --@Autor(es): Aldo Sebastian Altamirano Vázquez
 --            Carlo Kiliano Ferrera Guadarrama              
 --@Fecha creación: 05/12/2024
---@Descripción: Se crean los usuarios admin e invitado y sus roles correspondientes
-
+--@Descripción:
 /*Se desea verificar que al insertar una licencia para un propietario cumpla con las
 siguientes condiciones:
 *Que el propietario no sobrepase las 3 licencias

@@ -78,25 +78,36 @@ join contaminante_vehiculo cv on v.vehiculo_id = cv.vehiculo_id
 join contaminante c on cv.contaminante_id = c.contaminante_id
 where cv.medicion = q1.max_medicion_registrada;
 
-/*---Consulta 5 (Outter join)---
-Se necesita hacer una consulta donde se vea a todos los propietarios que tengan 
-o no multas registradas, se necesita mostrar el nombre completo del propietario, correo,
-puntos negativos por falta cometida, descripcion de la falta, folio de la multa
-y puntos negativos acumuludos
-Solo se interesa mandar un reporte de sus multas a los que tengan un correo con 
-dominio gmail*/
-select p.nombre ||' '||p.apellido_paterno||' '||p.apellido_materno as nombre_propietario,
-  p.correo, m.folio, m.puntos_negativos, m.descripcion, p.puntos_negativos_acumulados
-from propietario p
-left join multa m on p.propietario_id = m.propietario_id
-where p.correo like '%gmail%';
 
---vehiculos que no tengan multas
+
+/* Consulta 5 - Outer join, subconsultas y funciones de agregacion
+Se desea obtener un pequeño reporte de todos los propietarios 
+que ha tenido un vehiculo, debe mostrarse el numero de serie del vehiculo, su placa, 
+estado, el nombre completo del propietario, el periodo de propiedad, y cuantas multas 
+tuvo el propietario en ese lapso(tomar en cuenta que pudo haber tenido 0)
+*/
+select v.numero_serie, pl.numero_placa, p.nombre, p.apellido_paterno, 
+  p.apellido_materno, pv.fecha_adquisicion, pv.fecha_fin,
+  q1.num_multas_propietario
+from (
+  select pv.propietario_id, count(m.puntos_negativos) num_multas_propietario
+  from historico_propietario_vehiculo pv
+  join propietario p on pv.propietario_id = p.propietario_id
+  left join multa m on p.propietario_id = m.propietario_id
+  where m.fecha_registro >= pv.fecha_adquisicion
+    and m.fecha_registro <= nvl(pv.fecha_fin, sysdate)
+  group by pv.propietario_id
+) q1
+join propietario p on q1.propietario_id = p.propietario_id
+join historico_propietario_vehiculo pv on p.propietario_id = pv.propietario_id
+join vehiculo v on pv.vehiculo_id = v.vehiculo_id
+join placa pl on v.placa_id = pl.placa_id
+join estado e on pl.estado_id = e.estado_id;
 
 
 /*---Consulta 6 (Natural Join)---
-Se desea una descripcion detallada de los autos que son del año 2021 y de CDMX, que sean 
-de tipo transporte publico y su licencia sea de tipo A.
+Se desea una descripcion detallada de los autos que son del año 2021 y de baja california,
+ que sean de tipo transporte publico y su licencia sea de tipo A.
 Se quiere mostrar el identificador, el numero de serie, placa, su status, fecha_status 
 el numero de pasajeros sentados,tipo y descripcion de licencia
 */
@@ -114,25 +125,30 @@ and e.clave = 'BC';
 
 
 /*---Consulta 7 (Tabla externa)---
-De la tabla externa se quiere saber por cada tipo de combustible, cuantas marcas lo usan,
-cuantos autos en total lo usaron en 2021 (suma de la cantidad de vehiculos de las marca)
-el promedio de consumo de combustible OBFCM y de emisiones C02 
-*/
+Se desea consultar a los fabricantes cuyos vehículos tienen emisiones promedio de CO2 
+superiores al promedio global, agrupando los resultados por tipo de combustible. Esta 
+información permitirá identificar qué fabricantes destacan negativamente en emisiones para
+ cada tipo de combustible.*/
 
+select fabricante, tipo_combustible, avg(emisiones_co2), 
+  trunc((select avg(emisiones_co2) from emisiones_vehiculo_externa),2)
+  as prom_emisiones_co2_global
+from emisiones_vehiculo_externa
+group by fabricante, tipo_combustible
+having avg(emisiones_co2) >= prom_emisiones_co2_global
+order by 1;
 
-/*
-Consulta 8 (Tabla Temporal)
-
-/*Se requiere ingresar una cantidad de vehiculos sin placa a la Base de Datos, estos
+/*Consulta 8 (Tabla Temporal)
+Se requiere ingresar una cantidad de vehiculos sin placa a la Base de Datos, estos
 registros se estan guardando en la tabla temporal "vehiculos_sin_placa_temporal",
-posteriormente se ingresaran ala tabla vehiculo, pero antes se quiere necesita saber 
-la cantidad de placas que se necesitan por cada marca
-*/
+posteriormente se ingresaran ala tabla vehiculo, pero antes se quiere saber 
+la cantidad de placas que se necesitan por cada marca*/
 
-select vt.vehiculo_id, vt.numero_serie, count(*), mo.nombre as modelo, ma.clave as marca
+--insertar unos registros aqui-- (carlo)
+
+select ma.marca_id,ma.clave, count(*) placas_requeridas
 from vehiculos_sin_placa_temporal vt
-join modelo mo on mo.modelo_id = vt.modelo_id
-join marca ma on ma.marca_id = mo.marca_id
-group by vt.vehiculo_id, vt.numero_serie, mo.nombre, ma.clave; 
+join modelo mo on vt.modelo_id = mo.modelo_id
+join marca ma on mo.marca_id = ma.marca_id
+group by ma.marca_id, ma.clave;
 
-select * from vehiculos_sin_placa_temporal;

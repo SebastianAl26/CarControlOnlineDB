@@ -26,19 +26,23 @@ begin
 
   if v_tipo_licencia = 'A' and (:new.pasajeros_sentados not between 0 and 4 
   or :new.pasajeros_parados != 0) then
-    raise_application_error(20001, 'ERROR, Licencia incorrecta para el tipo de auto');
+    raise_application_error(-20005, 'ERROR, Licencia incorrecta para el tipo de auto');
   end if;
 
   if v_tipo_licencia = 'B' and (:new.pasajeros_sentados not between 6 and 8 
   or :new.pasajeros_parados != 0) then
-    raise_application_error(20001, 'ERROR, Licencia incorrecta para el tipo de auto');
+    raise_application_error(-20006, 'ERROR, Licencia incorrecta para el tipo de auto');
   end if;
 
   if v_tipo_licencia = 'C' and (:new.pasajeros_sentados < 8 
   or :new.pasajeros_parados < 20) then
-    raise_application_error(20001, 'ERROR, Licencia incorrecta para el tipo de auto');
+    raise_application_error(-20007, 'ERROR, Licencia incorrecta para el tipo de auto');
   end if;
+
 
 end;
 /
 show errors
+
+--Complejidad ciclomatica de 4
+--al menos deben de ser 4 pruebas

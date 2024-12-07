@@ -15,20 +15,17 @@ Prompt ===========================================================
 
 insert into propietario values (
   1005, 'RFCLNMBVS', 'Kiliano', 'Ferrera', 'Guadarrama',
-  null, 'kili@gmail.com', 0, 1
+  null, 'kili@gmail.com', 0, TRUE
 );
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
   huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
-  propietario_id, licencia_id)
-values (licencia_propietario_id_seq.nextval, 'cccc', empty_blob(), empty_blob(), 
-  empty_blob(), empty_blob(), to_date('10/10/2030','dd/mm/yyyy'), null, 1005, 2);
-
-insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 
-  huella_indice_der, huella_indice_izq, fecha_adquisicion, licencia_remplazo_id,
-  propietario_id, licencia_id)
-values (licencia_propietario_id_seq.nextval, 'zzzz', empty_blob(), empty_blob(), 
+  propietario_id, licencia_id) values 
+  (licencia_propietario_id_seq.nextval, 'cccc', empty_blob(), empty_blob(), 
+  empty_blob(), empty_blob(), to_date('10/10/2030','dd/mm/yyyy'), null, 1005, 2),
+  (licencia_propietario_id_seq.nextval, 'zzzz', empty_blob(), empty_blob(), 
   empty_blob(), empty_blob(), to_date('10/10/2030','dd/mm/yyyy'), null, 1005, 3);
+
 
 
 declare
@@ -64,7 +61,7 @@ Prompt ===========================================================
 
 insert into propietario values (
   1001, 'RFCKILIANO12', 'Aldo', 'Altamirano', 'Guadarrama',
-  null, 'carlo@gmail.com', 0, 1
+  null, 'carlo@gmail.com', 0, 
 );
 
 insert into licencia_propietario (licencia_propietario_id, num_licencia, foto, firma, 

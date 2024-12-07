@@ -36,6 +36,7 @@ actualizado. También se quiere mostrar número total de contaminantes
 registrados por cada vehículo
 */
 
+--poner unos datos para que funcione (carlo)
 create or replace view v_reporte_contaminantes(
   numero_serie, anio, nombre_marca, clave, numero_placa, 
   capacidad, unidad, tipo_transmision, cuenta_con_frenos_abs,
@@ -56,18 +57,34 @@ join vehiculo_particular vp on v.vehiculo_id = vp.vehiculo_id
 join placa p on v.placa_id = p.placa_id
 join status_vehiculo s on v.status_vehiculo_id = s.status_vehiculo_id
 join modelo mo on v.modelo_id = mo.modelo_id
-join marca ma on mo.marca_id = ma.marca_id;
+join marca ma on mo.marca_id = ma.marca_id; 
 
-/*
-Se desea cada año generar un reporte para analizar las multas cometidas 
-en ese mismo año, en el reporte debe salir el numero de serie del vehiculo,
-rfc del propietario, fecha de registro, puntos negativos, descripcion de la multa y numero de licencia.
+/*Constantemente se desea consultar de los propietarios que tengan multas registradas
+el nombre completo del propietario, correo y puntos negativos acumulados ademas 
+descripcion, fecha de registro y puntaje la multa que más puntos negativos haya generado 
+Esto con la finalidad de evnviarles un correo informe pero solo a los que tengan un 
+correo con dominio gmail*/
 
-El proporsito de la vista es ocultar datos sensibles de licencia, ocultar datos de poca
-relevancia para propietario y vehiculo 
-*/
+create or replace view v_propietarios_multas_max_puntaje(
+  nombre_propietario, correo, puntos_negativos_acumulados, descripcion,
+  fecha_registro, puntaje_negativo
+) as select p.nombre||' '||p.apellido_paterno||' '||p.apellido_materno nombre_propietario,
+  p.correo, p.puntos_negativos_acumulados, m.descripcion, m.fecha_registro,
+  m.puntos_negativos
+from (
+  select p.propietario_id, max(m.puntos_negativos) max_puntaje_negativo
+  from propietario p
+  join multa m on p.propietario_id = m.propietario_id
+  where p.correo like '%gmail%'
+  group by p.propietario_id
+) q1
+join propietario p on q1.propietario_id = p.propietario_id
+join multa m on p.propietario_id = m.propietario_id
+where q1.max_puntaje_negativo = m.puntos_negativos;
+
 
 /*
 select * from v_licencias_propietarios;
 select * from v_reporte_contaminantes;
+select * from v_propietarios_multas_max_puntaje;
 */

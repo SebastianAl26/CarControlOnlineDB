@@ -18,12 +18,12 @@ grant read, write on directory tmp_dir to af_proy_admin;
 prompt conectando como af_proy_admin
 connect af_proy_admin/af@afbd_s2
 
-create table emisiones_vehiculos_externa(
-  marca varchar2(40),
+create table emisiones_vehiculo_externa(
+  fabricante varchar2(40),
   tipo_combustible varchar2(20),
   numero_vehiculos number(10,0),
   consumo_combustible number(4,2),
-  emsiones_co2 number(5,2),
+  emisiones_co2 number(5,2),
   consumo_combustible_ponderado number(4,2),
   emisiones_co2_ponderada number(5,2)
 )
@@ -38,8 +38,8 @@ organization external (
       lrtrim
       missing field values are null
       (
-        marca, tipo_combustible, numero_vehiculos, consumo_combustible,
-        emsiones_co2, consumo_combustible_ponderado, emisiones_co2_ponderada
+        fabricante, tipo_combustible, numero_vehiculos, consumo_combustible,
+        emisiones_co2, consumo_combustible_ponderado, emisiones_co2_ponderada
       )
   )
   location ('tabla-externa.csv')
