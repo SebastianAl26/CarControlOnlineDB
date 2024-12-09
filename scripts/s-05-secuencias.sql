@@ -4,6 +4,7 @@
 --@Descripción: Se crean secuencias para las entidades que lo requieran
 whenever sqlerror exit;
 connect af_proy_admin/af@afbd_s2
+
 --Tabla pais
 create sequence pais_id_seq
 start with 1

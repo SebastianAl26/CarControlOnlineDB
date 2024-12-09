@@ -17,11 +17,10 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (1000, 'ZZZZZZZ', false, 1);
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (1501, 'BBBBBB', '2025', 1, 0, 0, 'ZZZZZZZ', 
-to_date('01/07/2023', 'dd/mm/yyyy'), 1000, 1, 1, 1); 
-
+to_date('01/07/2023', 'dd/mm/yyyy'), 400000, 1000, 1, 1, 1); 
 
 declare
   v_cantidad_vehiculos number;
@@ -33,9 +32,7 @@ begin
 
   select count(*) into v_cantidad_vehiculos
   from vehiculo_transporte_publico
-  where vehiculo_id = 1501
-    and pasajeros_parados = 0
-    and pasajeros_sentados = 4;
+  where vehiculo_id = 1501;
 
   if v_cantidad_vehiculos = 1 then
     dbms_output.put_line('OK, VEHICULOS INSERTADOS');
@@ -56,10 +53,10 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (1011, 'ZXZXZXZX', false, 1);
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (1601, 'BABABA', '2025', 1, 0, 0, 'ZAZAZAZ', 
-to_date('01/07/2023', 'dd/mm/yyyy'), 1011, 1, 1, 1); 
+to_date('01/07/2023', 'dd/mm/yyyy'), 400000, 1011, 1, 1, 1); 
 
 declare
   v_codigo number;
@@ -102,10 +99,10 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (1012, 'AMAMAMAM', false, 1);
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (1701, 'ÑMÑMÑMÑ', '2025', 1, 0, 0, 'POPOPOPO', 
-to_date('01/07/2023', 'dd/mm/yyyy'), 1012, 1, 1, 1); 
+to_date('01/07/2023', 'dd/mm/yyyy'), 400000,1012, 1, 1, 1); 
 
 declare
   v_codigo number;
@@ -148,10 +145,10 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (1013, 'LOLOLOL', false, 1);
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (1801, 'BBAASSAA', '2025', 1, 0, 0, 'YTYTYTYT', 
-to_date('01/07/2023', 'dd/mm/yyyy'), 1013, 1, 1, 1); 
+to_date('01/07/2023', 'dd/mm/yyyy'), 400000, 1013, 1, 1, 1); 
 
 declare
   v_codigo number;
@@ -194,10 +191,10 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (1100, 'LO', false, 1);
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (2000, 'AB', '2025', 1, 0, 0, 'YT', 
-to_date('01/07/2023', 'dd/mm/yyyy'), 1100, 1, 1, 1); 
+to_date('01/07/2023', 'dd/mm/yyyy'),400000, 1100, 1, 1, 1); 
 
 declare
   v_codigo number;
@@ -240,10 +237,10 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (1101, 'LO', false, 1);
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, status_vehiculo_id, 
   modelo_id, propietario_id) 
 values (2001, 'ABMLN', '2025', 1, 0, 0, 'YTZÑÑ', 
-to_date('01/07/2023', 'dd/mm/yyyy'), 1101, 1, 1, 1); 
+to_date('01/07/2023', 'dd/mm/yyyy'), 400000, 1101, 1, 1, 1); 
 
 declare
   v_codigo number;
@@ -286,10 +283,10 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (1110, 'ZÑ', false, 1);
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, status_vehiculo_id, 
   modelo_id, propietario_id) 
 values (2100, 'ABZKKL', '2025', 1, 0, 0, 'YTZZKKÑ', 
-to_date('01/07/2023', 'dd/mm/yyyy'), 1110, 1, 1, 1); 
+to_date('01/07/2023', 'dd/mm/yyyy'), 400000, 1110, 1, 1, 1); 
 
 declare
   v_codigo number;

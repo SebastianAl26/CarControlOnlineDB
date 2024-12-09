@@ -10,20 +10,20 @@ create or replace public synonym vehiculo_tp for vehiculo_transporte_publico;
 create or replace public synonym historico_pv for historico_propietario_vehiculo;
 create or replace public synonym historico_sv for historico_status_vehiculo;
 
---Admin otorga permiso de lectura a 3 tablas
+--Admin otorga permiso de lectura a 4 tablas
 grant select on vehiculo to af_proy_invitado;
 grant select on placa to af_proy_invitado;
 grant select on modelo to af_proy_invitado;
 grant select on marca to af_proy_invitado;
 
---invitado crea sinonimos privados para las tablas que admin otorgo permiso
+--invitado crea sinonimos privados para las tablas que admin le otorgo permiso
 connect af_proy_invitado/af@afbd_s2
 create or replace synonym vehiculo for af_proy_admin.vehiculo;
 create or replace synonym placa for af_proy_admin.placa;
 create or replace synonym modelo for af_proy_admin.modelo;
 create or replace synonym marca for af_proy_admin.marca;
 
---creamos un sinonimo para todas las tablas, af_<nombre tabla>
+--creamos un sinonimo para todas las tablas de admin, af_<nombre tabla>
 connect af_proy_admin/af@afbd_s2
 
 declare
@@ -37,7 +37,3 @@ begin
   end loop;
 end;
 /
-
-
-/*create or replace synonym af_:ph1 for :ph1'
-using p.table_name;*/

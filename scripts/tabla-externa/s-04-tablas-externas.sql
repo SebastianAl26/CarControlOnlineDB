@@ -4,8 +4,9 @@
 --@Descripción: Implementacion de tablas externas
 
 /*
-Csv o conjunto de datos recopilado de kaggle
-*/
+Csv o conjunto de datos recopilado de kaggle, el csv trata de la cantidad de vehiculos
+generados por varios fabricantes en el año de 2021, su tipo y su promedio de consumo de 
+combustible y promedio de emisiones co2.*/
 
 prompt conectando como sys
 connect sys/system1@afbd_s2 as sysdba
@@ -45,5 +46,5 @@ organization external (
   location ('tabla-externa.csv')
 )
 reject limit unlimited;
-!chmod 777 &&path_ext
+--!chmod 777 &&path_ext
 prompt tabla temporal creada

@@ -6,7 +6,7 @@
 /*En el caso de de estudio se dice que al registrar una licencia para el tipo de 
 transporte publico se debe de hacer en base a los pasajeros parados y sentados que puede
 tener el vehiculo : 
-tipo a -> taxis sedan comunmente 4 pasajeros sentados y 0 de pie
+tipo a -> taxis de tipo sedan comunmente 4 pasajeros sentados y 0 de pie
 tipo b -> camionetas comunmente 6 a 8 pasajeros sentados y 0 de pie
 tipo c -> camiones mas 8 pasajeros sentados y más de 20 de pie
 EL trigger debe validar qua licencia que se asigne coincida con esas condiciones
@@ -39,10 +39,6 @@ begin
     raise_application_error(-20007, 'ERROR, Licencia incorrecta para el tipo de auto');
   end if;
 
-
 end;
 /
 show errors
-
---Complejidad ciclomatica de 4
---al menos deben de ser 4 pruebas

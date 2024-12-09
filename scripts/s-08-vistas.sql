@@ -36,7 +36,6 @@ actualizado. También se quiere mostrar número total de contaminantes
 registrados por cada vehículo
 */
 
---poner unos datos para que funcione (carlo)
 create or replace view v_reporte_contaminantes(
   numero_serie, anio, nombre_marca, clave, numero_placa, 
   capacidad, unidad, tipo_transmision, cuenta_con_frenos_abs,

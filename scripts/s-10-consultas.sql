@@ -82,19 +82,22 @@ where cv.medicion = q1.max_medicion_registrada;
 
 /* Consulta 5 - Outer join, subconsultas y funciones de agregacion
 Se desea obtener un pequeño reporte de todos los propietarios 
-que ha tenido un vehiculo, debe mostrarse el numero de serie del vehiculo, su placa, 
-estado, el nombre completo del propietario, el periodo de propiedad, y cuantas multas 
-tuvo el propietario en ese lapso(tomar en cuenta que pudo haber tenido 0)
+que ha tenido el vehiculo con numero de serie 1A2B3C4D5E6F7G8H9J
+(uso del historico) debe mostrarse el numero de serie del vehiculo, su placa, estado, 
+el nombre completo del propietario, el periodo de propiedad, 
+y cuantas multas tuvo el propietario en ese lapso(tomar en cuenta que pudo haber tenido 0)
 */
-select v.numero_serie, pl.numero_placa, p.nombre, p.apellido_paterno, 
+select v.numero_serie, pl.numero_placa, e.nombre, p.nombre, p.apellido_paterno, 
   p.apellido_materno, pv.fecha_adquisicion, pv.fecha_fin,
   q1.num_multas_propietario
 from (
   select pv.propietario_id, count(m.puntos_negativos) num_multas_propietario
   from historico_propietario_vehiculo pv
+  join vehiculo v on pv.vehiculo_id = v.vehiculo_id
   join propietario p on pv.propietario_id = p.propietario_id
   left join multa m on p.propietario_id = m.propietario_id
-  where m.fecha_registro >= pv.fecha_adquisicion
+  where substr(v.numero_serie, 1, 8) = '1A2B3C4D'
+    and m.fecha_registro >= pv.fecha_adquisicion
     and m.fecha_registro <= nvl(pv.fecha_fin, sysdate)
   group by pv.propietario_id
 ) q1
@@ -144,7 +147,55 @@ registros se estan guardando en la tabla temporal "vehiculos_sin_placa_temporal"
 posteriormente se ingresaran ala tabla vehiculo, pero antes se quiere saber 
 la cantidad de placas que se necesitan por cada marca*/
 
---insertar unos registros aqui-- (carlo)
+--Se insertan registros en esta sesion para la consulta de tabla temporal
+
+Prompt tabla temporal vehiculos sin placa
+-- Vehículos de tipo transporte_publico (es_transporte_publico = 1)
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, precio, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, 'NNNB3C4D5E6F7GCDMX', '2022', 1, 0, 0, '1A2B3C4D5E6F7G9983', 
+to_date('01/07/2023', 'dd/mm/yyyy'), 400000, null, 1, 1, 1); 
+
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, precio, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, '2B3C4D5BBB7G8H9I0K', '2021', 1, 0, 0, '2B3C4D5E6F7G8H9L0M', 
+to_date('10/08/2023', 'dd/mm/yyyy'), 400000, null, 1, 1, 2); 
+
+-- Vehículos de tipo carga (es_carga = 1)
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, precio, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, '66ZZ7G8H9I0J1K2L3N', '2018', 0, 1, 0, '5E6F7G8H9I0LLOOP', 
+to_date('01/06/2023', 'dd/mm/yyyy'), 400000, null, 1, 5, 5); 
+
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, precio, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, '8KPP8H9ÑLK1K2L3N4O', '2021', 0, 1, 0, '6F7G8H9I0J1KILIA', 
+to_date('10/09/2023', 'dd/mm/yyyy'), 400000, null, 1, 4, 6); 
+
+-- Vehículos de tipo particular (es_particular = 1)
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, precio, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, '9I0J1K2L3M4POPOT', '2021', 0, 0, 1, '9I0J1K2LLIIY', 
+to_date('02/11/2023', 'dd/mm/yyyy'), 400000, null, 1, 10, 1); 
+
+-- Vehículos de tipo carga y particular (es_carga = 1 y es_particular = 1)
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, precio, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, 'D3M4N5O6P7Q8MNJUO', '2020', 0, 1, 1, 'D3M4N5O99OM', 
+to_date('28/11/2023', 'dd/mm/yyyy'), 400000, null, 1, 6, 5); 
+
+insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio, 
+  es_transporte_publico, es_carga, es_particular, num_serie_dispo_medicion, 
+  fecha_status, precio, placa_id, status_vehiculo_id, modelo_id, propietario_id) 
+values (vehiculo_id_seq.nextval, 'E4N5O6JJJ8ROOPPÑÑ', '2021', 0, 1, 1, 'E4N5O6PSSLL', 
+to_date('05/12/2023', 'dd/mm/yyyy'), 400000, null, 1, 17, 6); 
+
 
 select ma.marca_id,ma.clave, count(*) placas_requeridas
 from vehiculos_sin_placa_temporal vt

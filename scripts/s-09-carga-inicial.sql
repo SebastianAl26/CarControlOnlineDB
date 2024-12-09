@@ -1,7 +1,7 @@
 --@Autor(es): Aldo Sebastian Altamirano Vázquez
 --            Carlo Kiliano Ferrera Guadarrama              
 --@Fecha creación: 04/12/2024
---@Descripción: Se hace la carga inicial de la base de datos, generados por chatgpt
+--@Descripción: Se hace la carga inicial de la base de datos
 whenever sqlerror exit rollback;
 connect af_proy_admin/af@afbd_s2
 
@@ -176,7 +176,7 @@ insert into estado (estado_id, clave, nombre)
 values (estado_id_seq.nextval, 'JC', 'Jalisco');
 
 insert into estado (estado_id, clave, nombre) 
-values (estado_id_seq.nextval, 'MC', 'México');
+values (estado_id_seq.nextval, 'MC', 'Estado de México');
 
 insert into estado (estado_id, clave, nombre) 
 values (estado_id_seq.nextval, 'MN', 'Michoacán');
@@ -229,7 +229,7 @@ values (estado_id_seq.nextval, 'ZS', 'Zacatecas');
 Prompt Tabla placa
 ----Tabla placa---- 
 insert into placa (placa_id, numero_placa, es_inactiva, estado_id) 
-values (placa_id_seq.nextval, 'ABC1234567', false, 1);  -- Aguascalientes (1)
+values (placa_id_seq.nextval, 'ABC1234567', true, 1);  -- Aguascalientes (1)
 
 insert into placa (placa_id, numero_placa, es_inactiva, estado_id) 
 values (placa_id_seq.nextval, 'DEF4567890', false, 2);  -- Baja California (2)
@@ -238,7 +238,7 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (placa_id_seq.nextval, 'LMN2345678', false, 2);  -- Baja California (3)
 
 insert into placa (placa_id, numero_placa, es_inactiva, estado_id) 
-values (placa_id_seq.nextval, 'GHI7890123', false, 3);  -- Baja California Sur (4)
+values (placa_id_seq.nextval, 'GHI7890123', true, 3);  -- Baja California Sur (4)
 
 insert into placa (placa_id, numero_placa, es_inactiva, estado_id) 
 values (placa_id_seq.nextval, 'JKL0123456', false, 4);  -- Campeche (5)
@@ -256,7 +256,7 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (placa_id_seq.nextval, 'XYZ1234567', false, 7);  -- CDMX (9)
 
 insert into placa (placa_id, numero_placa, es_inactiva, estado_id) 
-values (placa_id_seq.nextval, 'ABC7890123', false, 7);  -- CDMX  (10)
+values (placa_id_seq.nextval, 'ABC7890123', true, 7);  -- CDMX  (10)
 
 insert into placa (placa_id, numero_placa, es_inactiva, estado_id) 
 values (placa_id_seq.nextval, 'VWX2345678', false, 8);  -- Durango (11)
@@ -271,7 +271,7 @@ insert into placa (placa_id, numero_placa, es_inactiva, estado_id)
 values (placa_id_seq.nextval, 'EFG1234567', false, 11);  -- Jalisco (14)
 
 insert into placa (placa_id, numero_placa, es_inactiva, estado_id) 
-values (placa_id_seq.nextval, 'RST6789012', false, 11);  -- Jalisco (15)
+values (placa_id_seq.nextval, 'RST6789012', true, 11);  -- Jalisco (15)
 
 insert into placa (placa_id, numero_placa, es_inactiva, estado_id) 
 values (placa_id_seq.nextval, 'HIJ4567890', false, 12);  -- México (16)
@@ -326,6 +326,11 @@ insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido
   curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
 values (propietario_id_seq.nextval, 'MARP880720HLN', 'María', 'Pérez', 'Navarro', 
   'MARP880720HDFMPN09', 'maria.perez@gmail.com', 0, 1);
+
+insert into propietario (propietario_id, rfc, nombre, apellido_paterno, apellido_materno, 
+  curp, correo, puntos_negativos_acumulados, con_derecho_a_licencia) 
+values (propietario_id_seq.nextval, 'LOLA98765XX', 'Fedrico', 'Gutierrez', 'Navarro', 
+  'LOLA9875ZZS', 'federico.gut@gmail.com', 50, 1);
 
 Prompt tabla licencia
 ---Tabla licencia---
@@ -433,6 +438,16 @@ insert into multa (propietario_id, folio, fecha_registro, descripcion, puntos_ne
 values (5, '00002', to_date('12/09/2023', 'dd/mm/yyyy'), 
   'Multa por no llevar puesto el cinturón de seguridad', 15, empty_blob());
 
+insert into multa (propietario_id, folio, fecha_registro, descripcion, puntos_negativos, 
+  documento_pdf) 
+values (9, '00002', to_date('16/11/2023', 'dd/mm/yyyy'), 
+  'Conducir a limites de velocidad no permitidos', 35, empty_blob());
+
+insert into multa (propietario_id, folio, fecha_registro, descripcion, puntos_negativos, 
+  documento_pdf) 
+values (9, '00003', to_date('17/11/2023', 'dd/mm/yyyy'), 
+  'Multa por no llevar puesto el cinturón de seguridad', 15, empty_blob());
+
 Prompt tabla status_vehiculo
 
 insert into status_vehiculo (status_vehiculo_id, nombre, descripcion) 
@@ -470,99 +485,99 @@ Prompt tabla vehiculo
 
 -- Vehículos de tipo transporte_publico (es_transporte_publico = 1)
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, '1A2B3C4D5E6F7G8H9J', '2022', 1, 0, 0, '1A2B3C4D5E6F7G8H9K', 
-to_date('01/07/2023', 'dd/mm/yyyy'), 2, 1, 1, 1); 
+to_date('01/07/2023', 'dd/mm/yyyy'), 400000, 2, 1, 1, 1); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, '2B3C4D5E6F7G8H9I0K', '2021', 1, 0, 0, '2B3C4D5E6F7G8H9L0M', 
-to_date('10/08/2023', 'dd/mm/yyyy'), 3, 1, 1, 2); 
+to_date('10/08/2023', 'dd/mm/yyyy'), 400000, 3, 1, 1, 2); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, '3C4D5E6F7G8H9I0J1L', '2023', 1, 0, 0, '3C4D5E6F7G8H9M0N1P', 
-to_date('05/09/2023', 'dd/mm/yyyy'), 6, 1, 3, 3); 
+to_date('05/09/2023', 'dd/mm/yyyy'), 400000, 6, 1, 3, 3); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, '4D5E6F7G8H9I0J1K2M', '2020', 1, 0, 0, '4D5E6F7G8H9I0N1P3Q', 
-to_date('15/10/2023', 'dd/mm/yyyy'), 7, 1, 5, 4); 
+to_date('15/10/2023', 'dd/mm/yyyy'), 400000, 7, 1, 5, 4); 
 
 
 -- Vehículos de tipo carga (es_carga = 1)
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, '5E6F7G8H9I0J1K2L3N', '2018', 0, 1, 0, '5E6F7G8H9I0J1K2L', 
-to_date('01/06/2023', 'dd/mm/yyyy'), 8, 1, 5, 5); 
+to_date('01/06/2023', 'dd/mm/yyyy'), 400000, 8, 1, 5, 5); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, '6F7G8H9I0J1K2L3N4O', '2021', 0, 1, 0, '6F7G8H9I0J1K2L5P', 
-to_date('10/09/2023', 'dd/mm/yyyy'), 11, 1, 4, 6); 
+to_date('10/09/2023', 'dd/mm/yyyy'), 400000, 11, 1, 4, 6); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, '7G8H9I0J1K2L3N4O5P', '2022', 0, 1, 0, '7G8H9I0J1K2L6Q', 
-to_date('20/09/2023', 'dd/mm/yyyy'), 12, 1, 8, 7); 
+to_date('20/09/2023', 'dd/mm/yyyy'), 400000, 12, 1, 8, 7); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, '8H9I0J1K2L3N4O5P6Q', '2020', 0, 1, 0, '8H9I0J1K2L7R', 
-to_date('30/10/2023', 'dd/mm/yyyy'), 13, 1, 9, 8); 
+to_date('30/10/2023', 'dd/mm/yyyy'), 400000, 13, 1, 9, 8); 
 
 
 -- Vehículos de tipo particular (es_particular = 1)
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, '9I0J1K2L3M4N5O6P', '2021', 0, 0, 1, '9I0J1K2L3M9S', 
-to_date('02/11/2023', 'dd/mm/yyyy'), 14, 1, 10, 1); 
+to_date('02/11/2023', 'dd/mm/yyyy'), 400000, 14, 1, 10, 1); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, 'A0J1K2L3M4N5O6P7Q', '2020', 0, 0, 1, 'A0J1K2L3M10T', 
-to_date('04/11/2023', 'dd/mm/yyyy'), 5, 1, 12, 2); 
+to_date('04/11/2023', 'dd/mm/yyyy'), 400000, 5, 1, 12, 2); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, 'B1K2L3M4N5O6P7Q8R', '2022', 0, 0, 1, 'B1K2L3M4N11U', 
-to_date('12/11/2023', 'dd/mm/yyyy'), 16, 1, 13, 3); 
+to_date('12/11/2023', 'dd/mm/yyyy'), 400000, 16, 1, 13, 3); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, 'C2L3M4N5O6P7Q8R9S', '2023', 0, 0, 1, 'C2L3M4N5O12V', 
-to_date('15/11/2023', 'dd/mm/yyyy'), 17, 1, 13, 4); 
+to_date('15/11/2023', 'dd/mm/yyyy'), 400000, 17, 1, 13, 4); 
 
 -- Vehículos de tipo carga y particular (es_carga = 1 y es_particular = 1)
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, 'D3M4N5O6P7Q8R9S0T', '2020', 0, 1, 1, 'D3M4N5O6P8R', 
-to_date('28/11/2023', 'dd/mm/yyyy'), 18, 1, 6, 5); 
+to_date('28/11/2023', 'dd/mm/yyyy'), 400000, 18, 1, 6, 5); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, 'E4N5O6P7Q8R9S0T1U', '2021', 0, 1, 1, 'E4N5O6P8Q9S', 
-to_date('05/12/2023', 'dd/mm/yyyy'), 19, 1, 17, 6); 
+to_date('05/12/2023', 'dd/mm/yyyy'), 400000, 19, 1, 17, 6); 
 
 insert into vehiculo (vehiculo_id, numero_serie, anio, es_transporte_publico, es_carga, 
-  es_particular, num_serie_dispo_medicion, fecha_status, placa_id, status_vehiculo_id, 
-  modelo_id, propietario_id) 
+  es_particular, num_serie_dispo_medicion, fecha_status, precio, placa_id, 
+  status_vehiculo_id, modelo_id, propietario_id) 
 values (vehiculo_id_seq.nextval, 'F5O6P7Q8R9S0T1U2V', '2023', 0, 1, 1, 'F5O6P7Q8S10T', 
-to_date('07/12/2023', 'dd/mm/yyyy'), 9, 1, 17, 7); 
+to_date('07/12/2023', 'dd/mm/yyyy'), 400000, 9, 1, 17, 7); 
 
 
 prompt tabla vehiculo_transporte_publico
@@ -599,33 +614,33 @@ values (8, 1, 'm3', null);
 
 prompt tabla vehiculo_particular
 insert into vehiculo_particular (vehiculo_id, num_bolsas_aire, cuenta_con_frenos_abs, 
-tipo_transmision, porcentaje_impuesto, porcentaje_seguro)
+tipo_transmision, cuota_impuesto, cuota_seguro)
 values (9, 6, true, 'A', 16.50, 8.75);
 
 insert into vehiculo_particular (vehiculo_id, num_bolsas_aire, cuenta_con_frenos_abs, 
-tipo_transmision, porcentaje_impuesto, porcentaje_seguro)
+tipo_transmision, cuota_impuesto, cuota_seguro)
 values (10, 4, false, 'M', 11.56, 10.00);
 
 insert into vehiculo_particular (vehiculo_id, num_bolsas_aire, cuenta_con_frenos_abs, 
-tipo_transmision, porcentaje_impuesto, porcentaje_seguro)
+tipo_transmision, cuota_impuesto, cuota_seguro)
 values (11, 8, true, 'A', 13.00, 7.50);
 
 insert into vehiculo_particular (vehiculo_id, num_bolsas_aire, cuenta_con_frenos_abs, 
-tipo_transmision, porcentaje_impuesto, porcentaje_seguro)
+tipo_transmision, cuota_impuesto, cuota_seguro)
 values (12, 7, false, 'M', 10.50, 9.25);
 
 prompt vehiculos que son de carga y particular al mismo tiempo
 
 insert into vehiculo_particular (vehiculo_id, num_bolsas_aire, cuenta_con_frenos_abs, 
-tipo_transmision, porcentaje_impuesto, porcentaje_seguro)
+tipo_transmision, cuota_impuesto, cuota_seguro)
 values (13, 7, true, 'A', 12.30, 8.75);
 
 insert into vehiculo_particular(vehiculo_id, num_bolsas_aire, cuenta_con_frenos_abs, 
-tipo_transmision, porcentaje_impuesto, porcentaje_seguro)
+tipo_transmision, cuota_impuesto, cuota_seguro)
 values (14, 4, false, 'M', 9.95, 6.80);
 
 insert into vehiculo_particular (vehiculo_id, num_bolsas_aire, cuenta_con_frenos_abs, 
-tipo_transmision, porcentaje_impuesto, porcentaje_seguro)
+tipo_transmision, cuota_impuesto, cuota_seguro)
 values (15, 8, true, 'A', 11.30, 8.50);
 -------------------------------------------------------------------------------------
 insert into vehiculo_carga (vehiculo_id, capacidad, unidad_capacidad, numero_remolques)
@@ -812,6 +827,17 @@ insert into vehiculos_sin_placa_temporal (vehiculo_id, numero_serie, anio,
 values (vehiculo_id_seq.nextval, 'E4N5O6JJJ8ROOPPÑÑ', '2021', 0, 1, 1, 'E4N5O6PSSLL', 
 to_date('05/12/2023', 'dd/mm/yyyy'), null, 1, 17, 6); 
 
+Prompt Tabla historico_propietario_vehiculo
+
+insert into historico_propietario_vehiculo (historico_propietario_vehiculo_id, 
+  fecha_adquisicion,fecha_fin, vehiculo_id, propietario_id)
+values (historico_propietario_vehiculo_id_seq.nextval, 
+  to_date('12/10/2023','dd/mm/yyyy'), to_date('12/12/2023','dd/mm/yyyy'), 1, 9);
+
+insert into historico_propietario_vehiculo (historico_propietario_vehiculo_id, 
+  fecha_adquisicion,fecha_fin, vehiculo_id, propietario_id)
+values (historico_propietario_vehiculo_id_seq.nextval, 
+  to_date('12/12/2023','dd/mm/yyyy'), null , 1, 1);
 
 prompt carga completada
 commit; 

@@ -2,8 +2,8 @@
 --            Carlo Kiliano Ferrera Guadarrama              
 --@Fecha creación: 05/12/2024
 --@Descripción: 
-/*Procedimiento almacenado para registrar una multa, el procedimiento acceptara los 
-siguientes parametros de entrada y salida: p_propietario_id, p_mensaje, p_puntos_negativos  
+/*El procedimiento acceptara los siguientes parametros de entrada y salida: 
+p_propietario_id, p_mensaje, p_puntos_negativos  
 p_num_multas out y p_perdida_licencias out(bandera que indica si el propietario ha perdido 
 sus licencias).
 El procedimiento debe registrar una multa al propietario indicado y actualizar su cantidad
@@ -19,19 +19,18 @@ create or replace procedure proc_registra_multa(
 v_puntos_negativos_propietario number;
 
 begin 
-  /*primero se obtiene el numero de multas si es que hay y en base a eso se puede 
-  saber folio siguiente*/
-  begin 
-    select count(*) into p_num_multas
-    from multa 
-    where propietario_id = p_propietario_id;
+  /*primero se obtiene el numero de multas de un propietario si es que hay y 
+  en base a eso se puede saber folio siguiente*/
 
-    p_num_multas := p_num_multas + 1;
+  select count(*) into p_num_multas
+  from multa 
+  where propietario_id = p_propietario_id;
 
-    exception 
-      when no_data_found then
-        p_num_multas := 1;
-  end;
+  p_num_multas := p_num_multas + 1;
+
+  if p_num_multas = 0 then
+      p_num_multas := 1;
+  end if;
 
   --Se inserta el registro de multa y se actualizan los puntos del propietario
   insert into multa(propietario_id, folio, fecha_registro, descripcion, 
@@ -56,7 +55,10 @@ begin
 
     delete from licencia_propietario
     where propietario_id = p_propietario_id;
+  else
+    p_perdida_licencias := 0; 
   end if;
+
 
 end;
 /

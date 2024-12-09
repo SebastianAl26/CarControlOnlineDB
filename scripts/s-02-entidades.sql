@@ -1,7 +1,8 @@
 --@Autor(es): Aldo Sebastian Altamirano Vázquez
 --            Carlo Kiliano Ferrera Guadarrama              
 --@Fecha creación: 26/11/2024
---@Descripción: Se crea el DDL del proyecto
+--@Descripción: Se crea el DDL del proyectos
+
 connect af_proy_admin/af@afbd_s2;
 whenever sqlerror exit;
 
@@ -164,6 +165,7 @@ create table vehiculo(
   es_particular boolean not null,
   num_serie_dispo_medicion char(18) not null,
   fecha_status date default sysdate,
+  precio number(10,2) not null,
   placa_id not null,
   status_vehiculo_id not null,
   modelo_id not null,
@@ -232,8 +234,8 @@ create table vehiculo_particular(
   num_bolsas_aire number(10,0) not null,
   cuenta_con_frenos_abs boolean not null,
   tipo_transmision char(1) not null,
-  porcentaje_impuesto number(4,2),
-  porcentaje_seguro number(4,2),
+  cuota_impuesto number(4,2),
+  cuota_seguro number(4,2),
   constraint vehiculo_particular_pk primary key(vehiculo_id),
   constraint vehiculo_particular_vehiculo_id_fk foreign key(vehiculo_id)
   references vehiculo(vehiculo_id),
@@ -253,7 +255,7 @@ create table historico_status_vehiculo(
 
   constraint historico_status_vehiculo_pk primary key(historico_status_vehiculo_id),
 
-  constraint historico_status_vehiculo_status_vehiculo_fk 
+  constraint historico_status_vehiculo_status_vehiculo_id_fk 
   foreign key(status_vehiculo_id)
   references status_vehiculo(status_vehiculo_id),
 

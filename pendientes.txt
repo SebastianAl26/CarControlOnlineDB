@@ -1,0 +1,12 @@
+Antes de las 8pm
+* Falta una prueba de una funcion
+*
+* Acabar la prueba del procedimiento
+-----------------------------------------------------------------------------
+Lo que resta de la noche
+* Trigger  y su prueba
+-----------------------------------------------------------------------------
+Mañana
+* Correr el validador del campos 
+*preparar el s-00-main
+*Revisar el encabezado de los scripts
