@@ -28,14 +28,11 @@ begin
 
   p_num_multas := p_num_multas + 1;
 
-  if p_num_multas = 0 then
-      p_num_multas := 1;
-  end if;
 
   --Se inserta el registro de multa y se actualizan los puntos del propietario
   insert into multa(propietario_id, folio, fecha_registro, descripcion, 
     puntos_negativos, documento_pdf)
-  values(p_propietario_id, p_num_multas + 1, sysdate, p_mensaje, p_puntos_negativos,
+  values(p_propietario_id, p_num_multas, sysdate, p_mensaje, p_puntos_negativos,
     empty_blob());
 
   update propietario 
