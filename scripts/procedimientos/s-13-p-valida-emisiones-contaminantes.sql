@@ -26,6 +26,8 @@ create or replace procedure proc_validacion_emisiones_contaminantes is
 
   --vehiculos que tendrian que recibir una notificacion por acumulacion de contaminantes
   --o por alguna medicion muy alta
+
+  --se repite vehiculo_id por cada contaminante generado
   cursor cur_vehiculos_a_notificar is 
     select cv.contaminante_vehiculo_id, q1.vehiculo_id, cv.contaminante_id
     from (
@@ -59,6 +61,7 @@ begin
     
     v_vehiculo_id_actual := p.vehiculo_id;
 
+    --se puede hacer porque estan ordenados
     if v_vehiculo_id_actual != v_vehiculo_id_anterior then
       v_num_notificacion := v_num_notificacion + 1;
     end if; 
