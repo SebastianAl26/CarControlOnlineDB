@@ -6,11 +6,11 @@
 whenever sqlerror exit;
 connect af_proy_admin/af@afbd_s2
 
-/*Se desea mostrar infromacion de los propietarios y sus licencias, pero 
+/*Se desea mostrar informacion de los propietarios y sus licencias, pero 
 restringiendo datos sensibles o privados del propietario como podrian ser curp, 
 puntos_negativos, foto, firma y huellas de sus licencias. 
 Para eso se desea crear una vista que incluya el nombre del propietario 
-y si es tiene licencias, su numero de licencia, su tipo y su fecha de vigencia.
+y si es que tiene licencias, su numero de licencia, su tipo y su fecha de vigencia.
 Otorgamos el permiso de usar esa vista al ususario invitado 
 donde se harian estas consultas
 */

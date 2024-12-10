@@ -44,7 +44,8 @@ on licencia_propietario(propietario_id);
 create index verificacion_vehiculo_id_ix
 on verificacion(vehiculo_id); 
 
-create index notificacion_vehiculo_id_ix on notificacion(vehiculo_id); 
+create index notificacion_vehiculo_id_ix 
+on notificacion(vehiculo_id); 
 
 create index notificacion_contaminante_vehiculo_id_ix
 on notificacion(contaminante_vehiculo_id); 
@@ -60,5 +61,5 @@ on historico_propietario_vehiculo(vehiculo_id, propietario_id);
 ----Indices basados en funciones----
 create index modelo_nombre_ifx on modelo(lower(nombre));
 
---Las busquedas de carros se realizan empleando los primeros 8 caracteres
+--Las busquedas de carros se realizan empleando los primeros 8 caracteres del num_serie
 create index vehiculo_numero_serie on vehiculo(substr(numero_serie, 1, 8));

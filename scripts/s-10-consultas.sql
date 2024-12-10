@@ -5,7 +5,7 @@
 
 /*
 ---Consulta 1 (Algebra Relacional)---
-Algunos erificentros realizaran un sorteo para obtener a lo vehiculos que tendran gratis
+Algunos verificentros realizaran un sorteo para obtener a lo vehiculos que tendran gratis
 su siguiente verificacion para ello se establecen las siguientes condiciones.
 El vehiculo debe tener el status EN REGLA (status_vehiculo_id = 1)
 El vehiculo debe ser de tipo particular 
@@ -29,7 +29,7 @@ from (
 
 /* ---Consulta 2 (Funciones de agregación, group by, having, sinonimo, inner join)---
 Se requiere obtener información sobre las emisiones de contaminantes generadas mensualmente 
-por los vehículos durante el año 2024. Se debe de mostrar el número de serie del vehículo, 
+cada vehículos durante el año 2024. Se debe de mostrar el número de serie del vehículo, 
 su año y el número de serie del dispositivo de medición asociado. Además, se muestra
 la cantidad total de emisiones mensuales y el maximo valor de estas para cada vehículo, 
 considerando únicamente aquellos que hayan registrado emisiones correspondientes a más 
@@ -60,7 +60,7 @@ group by nombre_propietario;
 /*---Consulta 4 (Subconsultas y funciones de agregacion)---
 Para cada uno de los vehiculos del año 2021 seleccionar del numero de serie, numero de 
 placa, el numero de serie del dispositivo de medicion, la clave, nombre, meidcion 
-y fecha de registro del contaminante que tuvo la mayor emision
+y fecha de registro del contaminante que tuvo el mayor valor
 */
 
 select q1.vehiculo_id, v.numero_serie, p.numero_placa, v.num_serie_dispo_medicion, 
