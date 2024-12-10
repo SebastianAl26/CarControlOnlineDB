@@ -39,7 +39,7 @@ begin
 
   delete from vehiculo
   where vehiculo_id = 1501;
-  
+   
   --El flujo no debio seguir aqui
   raise_application_error(-20102, 'ERROR, El trigger permite eliminaciones de autos que'||
   ' su propietario tiene multas, el trigger no funciona correctamente');

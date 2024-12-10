@@ -6,8 +6,10 @@
 Se desea crear un trigger que valide cuando se desea hacer una actualizacion a una placa
 en un vehiculo, se debe verificar que la nueva placa exista en la base de datos y que no 
 este asignada a otro auto.
+
 Si se hace la actualización se debera marcar como inactiva la placa que se remplazara y
-marcar como activa la placa que ahora tiene el vehículo y registar en el historico 
+marcar como activa la placa que ahora tiene el vehículo 
+Solo se puede cambiar el propietario si no tiene multas y se registar en el historico 
 el cambio de propietario.
 Tambien verificar cuando se desea borrar un vehiculo, que este vehiculo no tenga multas,
 de no ser asi no se podra borrar el vehiculo hasta que pague sus multas(se eliminen).

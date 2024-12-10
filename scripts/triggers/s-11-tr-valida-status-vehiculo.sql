@@ -63,6 +63,7 @@ begin
       if v_status_vehiculo = 1 then
       /*contamos cuantas notificaciones tiene el vehiculo, esta logica funciona ya que
       cada vez que el estado vuelve ser en regla las notificaciones se borran*/
+      
         select count(distinct num_notificacion) into v_num_notificaciones
         from notificacion
         where vehiculo_id = :old.vehiculo_id;
